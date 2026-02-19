@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    {% include "_header.html" %}
+
+    <div class="bg-white p-3 rounded shadow-sm">
+        <table id="pointsTable" class="table table-hover align-middle">
+            <thead>
+                <tr>
+                    <th style="width: 50px;">Type</th>
+                    <th>ID</th>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                    <th>Unit</th>
+                    <th class="text-end">Refresh</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in points %}
+                <tr id="row-{{ p.id }}" class="clickable {{ 'writable-row' if p.writable }}" data-details='{{ p.raw | tojson | safe }}'>
+                    <td>
+                        <i class="fas {{ 'fa-pen text-primary' if p.writable else 'fa-eye text-muted' }}"></i>
+                    </td>
+                    <td><small class="text-muted">{{ p.id }}</small></td>
+                    <td><strong>{{ p.title }}</strong></td>
+                    <td><span id="val-{{ p.id }}" class="val-badge">{{ p.display }}</span></td>
+                    <td>{{ p.unit }}</td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-outline-primary refresh-btn" data-id="{{ p.id }}">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% include "_modal.html" %}
+{% endblock %}
