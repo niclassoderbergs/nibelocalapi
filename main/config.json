@@ -1,0 +1,5 @@
+{
+    "api_url": "https://192.168.1.NNN:8443/api/v1/devices/0/points",
+    "username": "admin",
+    "password": "password"
+}
