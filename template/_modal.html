@@ -1,0 +1,69 @@
+<div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content shadow border-0">
+            <div class="modal-header py-2 px-3" id="modalHeader">
+                <h6 class="modal-title fw-bold" id="modalTitle">Parameter Details</h6>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body p-3">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="p-3 rounded bg-primary text-white d-flex justify-content-between align-items-center shadow-sm">
+                            <div>
+                                <span class="tech-label text-white-50">Current Live Value</span>
+                                <div class="h2 mb-0 fw-bold">
+                                    <span id="tCurrentValue">--</span>
+                                    <small class="fs-6 modal-unit"></small>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <span class="tech-label text-white-50">HTTP Methods</span>
+                                <div>
+                                    <span class="badge bg-info text-dark" id="tMethodRead">GET</span>
+                                    <span class="badge bg-warning text-dark" id="tMethodWrite" style="display:none;">PATCH</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <span class="tech-label">Direct API Endpoint</span>
+                    <code class="tech-value text-break d-block bg-light p-2 border rounded" id="tEndpoint" style="font-size: 0.75rem;"></code>
+                </div>
+
+                <div class="row g-2 mb-3">
+                    <div class="col-md-3 col-6">
+                        <div class="border rounded p-2 bg-white"><span class="tech-label">Data Type</span><span class="tech-value fw-bold" id="tType"></span></div>
+                    </div>
+                    <div class="col-md-3 col-6"><div class="border rounded p-2 bg-white"><span class="tech-label">Valid Range</span><span class="tech-value fw-bold" id="tRange"></span></div></div>
+                    <div class="col-md-3 col-6"><div class="border rounded p-2 bg-white"><span class="tech-label">Divisor / Dec</span><span class="tech-value fw-bold" id="tDiv"></span></div></div>
+                    <div class="col-md-3 col-6"><div class="border rounded p-2 bg-white"><span class="tech-label">Modbus Register</span><span class="tech-value fw-bold" id="tMod"></span></div></div>
+                    <div class="col-12 mt-2 bg-light p-2 rounded"><span class="tech-label text-primary">Description</span><p id="tDesc" class="mb-0 text-dark small"></p></div>
+                </div>
+
+                <div id="writeSection" class="p-3 border rounded bg-white mb-3 shadow-sm border-primary" style="display:none; border-width: 2px !important;">
+                    <h6 class="mb-2 text-primary fw-bold small"><i class="fas fa-edit"></i> Change Device Setting</h6>
+                    <div class="input-group input-group-sm">
+                        <input type="number" step="any" class="form-control border-primary" id="newValueInput">
+                        <span class="input-group-text modal-unit bg-primary text-white border-primary"></span>
+                        <button class="btn btn-primary fw-bold" type="button" id="saveBtn">Save Change</button>
+                    </div>
+                    <div class="mt-1 text-muted" style="font-size: 0.7rem;" id="rangeHint"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <span class="tech-label mb-1">API Payload (JSON Body)</span>
+                        <pre class="payload-box mb-0" id="payloadExample" style="font-size: 0.7rem; height: 180px;"></pre>
+                    </div>
+                    <div class="col-md-7">
+                        <span class="tech-label mb-1">Historical Data (24h)</span>
+                        <div style="height: 180px; position: relative;"><canvas id="historyChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
